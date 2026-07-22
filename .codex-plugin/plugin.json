@@ -1,0 +1,35 @@
+{
+  "name": "prosa-viva",
+  "version": "0.1.0",
+  "description": "Revisa textos em português brasileiro com clareza, naturalidade e preservação factual.",
+  "author": {
+    "name": "thiagocorreanet",
+    "url": "https://github.com/thiagocorreanet"
+  },
+  "homepage": "https://github.com/thiagocorreanet/prosa-viva",
+  "repository": "https://github.com/thiagocorreanet/prosa-viva",
+  "license": "MIT",
+  "keywords": [
+    "escrita",
+    "revisão",
+    "português",
+    "pt-BR",
+    "prosa"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Prosa Viva",
+    "shortDescription": "Refina prosa em pt-BR sem perder fatos ou voz",
+    "longDescription": "Revisa textos em português brasileiro para melhorar clareza, concisão, ritmo e naturalidade, preservando fatos, estrutura e voz.",
+    "developerName": "thiagocorreanet",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "websiteURL": "https://github.com/thiagocorreanet/prosa-viva",
+    "defaultPrompt": [
+      "Use $refinar-prosa para revisar este texto em pt-BR sem alterar os fatos.",
+      "Use $refinar-prosa para revisar este arquivo e preservar sua estrutura."
+    ]
+  }
+}
