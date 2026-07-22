@@ -186,6 +186,16 @@ referência, 2.000 linhas para o conjunto das referências e 40 linhas para
 `agents/openai.yaml`. O comando `python3 scripts/validate_skill_architecture.py`
 verifica esses invariantes.
 
+Durante o desenvolvimento, confirme que a instalação independente encontra a
+fonte canônica sem instalar nada:
+
+```bash
+npx skills add . --list
+```
+
+A saída deve incluir `refinar-prosa`. A instalação e a remoção propriamente
+ditas serão documentadas depois do teste completo da #21.
+
 ## Roadmap
 
 | Etapa | Entregas | Issues |
