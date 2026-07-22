@@ -247,7 +247,8 @@ A implementação deverá verificar:
    e aponta para um arquivo existente;
 5. nenhuma referência exige leitura encadeada de outra;
 6. os limites de linhas são respeitados;
-7. os planos #5–#10 usam caminhos `references/pt-BR/`;
+7. todos os caminhos de catálogo nos planos #5–#10 usam
+   `references/pt-BR/`, enquanto preservação autoral permanece no núcleo;
 8. o validador de Agent Skills aceita `skills/refinar-prosa/`;
 9. o validador de plugins aceita a raiz;
 10. `npx skills add . --list`, quando suportado, encontra `refinar-prosa`;
