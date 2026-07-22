@@ -109,6 +109,11 @@ ou invocados independentemente.
 Toda referência necessária aparece como link direto no `SKILL.md`. Referências
 não apontam para outras referências como requisito de execução.
 
+Essa regra acompanha a criação real dos arquivos. A #17 não cria referências
+vazias: ela registra o contrato e prepara os caminhos nos planos #5–#10. Cada
+issue de catálogo cria conteúdo completo e adiciona seu link direto na mesma
+mudança. Até lá, o `SKILL.md` liga todas e somente as referências existentes.
+
 ```text
 SKILL.md
   ├── references/preservacao-autoral.md
@@ -238,14 +243,16 @@ A implementação deverá verificar:
 1. existe exatamente um `SKILL.md` do produto;
 2. não existe `SKILL.md` na raiz;
 3. o manifesto aponta para `./skills/`;
-4. todos os seis links do `SKILL.md` existem e são relativos;
+4. toda referência existente está ligada pelo `SKILL.md`, todo link é relativo
+   e aponta para um arquivo existente;
 5. nenhuma referência exige leitura encadeada de outra;
 6. os limites de linhas são respeitados;
 7. os planos #5–#10 usam caminhos `references/pt-BR/`;
 8. o validador de Agent Skills aceita `skills/refinar-prosa/`;
 9. o validador de plugins aceita a raiz;
 10. `npx skills add . --list`, quando suportado, encontra `refinar-prosa`;
-11. a instalação isolada não cria ou depende de uma segunda cópia.
+11. a instalação isolada não cria ou depende de uma segunda cópia;
+12. nenhuma referência vazia ou placeholder foi criada para antecipar #5–#10.
 
 ## Relação com as próximas issues
 
