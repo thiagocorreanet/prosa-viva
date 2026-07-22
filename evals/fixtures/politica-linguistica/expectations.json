@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {"id":"ptbr-general","action":"review","output":"revised_text","reason":"Prosa claramente pt-BR."},
+    {"id":"ptbr-regional-technical","action":"review_minimally","output":"revised_text","reason":"Regionalismo e termo técnico não mudam o idioma."},
+    {"id":"mixed-document","action":"review_ptbr_only","output":"edited_file_summary","reason":"Citação inglesa e código são protegidos."},
+    {"id":"english-pasted","action":"preserve_with_notice","output":"notice","reason":"Inglês não é suportado na v1."},
+    {"id":"spanish-file","action":"do_not_write","output":"unchanged_file_summary","reason":"Arquivo fora de pt-BR."},
+    {"id":"ambiguous-embedded","action":"preserve_exactly","output":"input_only","reason":"Modo embutido não acrescenta aviso."},
+    {"id":"translation-request","action":"preserve_with_notice","output":"notice","reason":"Tradução está fora do escopo."}
+  ]
+}

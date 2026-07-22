@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {"id":"ptbr-general","mode":"pasted","genre":"general","input":"A reunião acontece na terça-feira e começa às 9h."},
+    {"id":"ptbr-regional-technical","mode":"pasted","genre":"internal","input":"O deploy ficou redondo, mas esse trem ainda exige um token."},
+    {"id":"mixed-document","mode":"file","genre":"documentation","input":"A API retorna 200.\n\n> This sentence is quoted.\n\n```js\nreturn 'ok'\n```"},
+    {"id":"english-pasted","mode":"pasted","genre":"general","input":"The meeting starts at nine on Tuesday."},
+    {"id":"spanish-file","mode":"file","genre":"documentation","input":"La reunión comienza a las nueve del martes."},
+    {"id":"ambiguous-embedded","mode":"embedded","genre":"pr-description","input":"Status API OK."},
+    {"id":"translation-request","mode":"pasted","genre":"general","input":"Translate and refine: The meeting starts at nine."}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {"id":"ptbr-general","preserve_exact":["terça-feira","9h"],"must_not_write":false,"exact_output":false},
+    {"id":"ptbr-regional-technical","preserve_exact":["redondo","esse trem","token"],"must_not_write":false,"exact_output":false},
+    {"id":"mixed-document","preserve_exact":["> This sentence is quoted.","```js\nreturn 'ok'\n```"],"must_not_write":false,"exact_output":false},
+    {"id":"english-pasted","preserve_exact":["The meeting starts at nine on Tuesday."],"must_not_write":false,"exact_output":false},
+    {"id":"spanish-file","preserve_exact":["La reunión comienza a las nueve del martes."],"must_not_write":true,"exact_output":true},
+    {"id":"ambiguous-embedded","preserve_exact":["Status API OK."],"must_not_write":false,"exact_output":true},
+    {"id":"translation-request","preserve_exact":["The meeting starts at nine."],"must_not_write":false,"exact_output":false}
+  ]
+}
