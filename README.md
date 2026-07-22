@@ -14,16 +14,15 @@ autor quis dizer e devolve ritmo, precisão e voz à prosa.
 [Visão](#visão) ·
 [Como funcionará](#como-funcionará) ·
 [Exemplo](#exemplo) ·
+[Instalação](#instalação-local-como-plugin) ·
 [Roadmap](#roadmap) ·
 [Contribuir](#como-contribuir)
 
 </div>
 
 > [!IMPORTANT]
-> O Prosa Viva está em fase de definição e ainda não possui uma versão
-> instalável. Acompanhe a [épica do projeto](https://github.com/thiagocorreanet/prosa-viva/issues/1)
-> ou as [releases](https://github.com/thiagocorreanet/prosa-viva/releases) para
-> saber quando a primeira versão estiver disponível.
+> O Prosa Viva ainda não possui uma release pública. O checkout atual já pode
+> ser instalado localmente no Codex pelo fluxo documentado abaixo.
 
 ## Visão
 
@@ -193,8 +192,8 @@ fonte canônica sem instalar nada:
 npx skills add . --list
 ```
 
-A saída deve incluir `refinar-prosa`. A instalação e a remoção propriamente
-ditas serão documentadas depois do teste completo da #21.
+A saída deve incluir `refinar-prosa`. Esse comando apenas confirma a descoberta;
+a instalação independente está descrita ao fim deste README.
 
 ## Idiomas suportados
 
@@ -227,18 +226,95 @@ núcleo comum.
 Consulte o [backlog completo](https://github.com/thiagocorreanet/prosa-viva/issues)
 para acompanhar decisões e progresso.
 
-## Instalação
+## Instalação local como plugin
 
-Ainda não há uma versão pública. Quando o primeiro pacote estiver pronto, esta
-seção documentará:
+O repositório mantém a versão SemVer limpa. Para desenvolvimento, uma cópia
+descartável em `~/plugins/prosa-viva` recebe o cachebuster usado pelo Codex. O
+marketplace pessoal fica em `~/.agents/plugins/marketplace.json`; staging,
+marketplace e cache não são versionados.
 
-- instalação como plugin do Codex;
-- instalação opcional somente como skill;
-- atualização, reinstalação e remoção;
-- diferenças entre Codex CLI e aplicativo desktop.
+Na raiz deste repositório, valide e crie o staging:
 
-O fluxo está sendo definido na
-[issue #21](https://github.com/thiagocorreanet/prosa-viva/issues/21).
+```bash
+python3 scripts/validate_skill_architecture.py
+python3 scripts/stage_local_plugin.py
+```
+
+Depois, peça ao Codex:
+
+```text
+Use $plugin-creator para conectar o plugin existente em
+~/plugins/prosa-viva ao marketplace pessoal. Preserve o manifesto do plugin,
+aplique o cachebuster local com update_plugin_cachebuster.py, leia o nome real
+do marketplace com read_marketplace_name.py e instale o plugin pela CLI.
+```
+
+O fluxo oficial lê o nome do marketplace, em vez de presumir `personal`, e
+termina com estes comandos públicos:
+
+```bash
+codex plugin add "prosa-viva@${PROSA_VIVA_MARKETPLACE_NAME}"
+codex plugin list --json
+```
+
+`PROSA_VIVA_MARKETPLACE_NAME` deve conter exatamente a saída de
+`read_marketplace_name.py`. A instalação de desenvolvimento terá uma versão
+como `0.1.0+codex.local-20260722-153045`; `.codex-plugin/plugin.json` no
+checkout continua em `0.1.0`.
+
+Abra uma conversa nova e invoque `$refinar-prosa`. No aplicativo desktop,
+reinicie o aplicativo somente quando criar, remover ou mudar a fonte do
+marketplace; uma reinstalação comum pede apenas uma conversa nova.
+
+### Atualização e reinstalação
+
+Após mudar a skill ou o manifesto, repita a validação e recrie integralmente o
+staging:
+
+```bash
+python3 scripts/validate_skill_architecture.py
+python3 scripts/stage_local_plugin.py
+```
+
+Em seguida, use novamente `$plugin-creator`. O helper
+`update_plugin_cachebuster.py` deve substituir o sufixo anterior por um único
+`+codex.local-<timestamp UTC>`; o helper `read_marketplace_name.py` fornece o
+nome usado na reinstalação:
+
+```bash
+codex plugin add "prosa-viva@${PROSA_VIVA_MARKETPLACE_NAME}"
+codex plugin list --json
+```
+
+Não incremente `0.1.0` apenas para invalidar o cache, não acumule sufixos e não
+edite `config.toml`, `marketplace.json` ou o cache manualmente. Teste a mudança
+em uma conversa nova.
+
+### Remoção
+
+Leia o mesmo nome do marketplace com `$plugin-creator` e use a API pública da
+CLI:
+
+```bash
+codex plugin remove "prosa-viva@${PROSA_VIVA_MARKETPLACE_NAME}" --json
+codex plugin list --json
+```
+
+A remoção desinstala o plugin e limpa seu cache, mas mantém a entrada disponível
+no marketplace pessoal para uma instalação futura. Não apague diretórios de
+cache nem altere configurações internas do Codex.
+
+## Instalação somente como skill
+
+Quem não precisa testar o manifesto e os metadados do plugin pode instalar
+somente a fonte canônica da skill:
+
+```bash
+npx skills add . --skill refinar-prosa
+```
+
+Antes de instalar, `npx skills add . --list` mostra o que será descoberto. Essa
+rota é independente do marketplace e não substitui o teste do pacote completo.
 
 ## Como contribuir
 
