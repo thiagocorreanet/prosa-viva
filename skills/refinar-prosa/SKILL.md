@@ -20,6 +20,36 @@ diretamente por este arquivo e relevantes aos sinais encontrados. Não dependa d
 encadeamento entre referências nem crie arquivos vazios para grupos ainda não
 implementados.
 
+## Política linguística
+
+As versões `0.1.x` suportam somente prosa em português brasileiro. Identifique
+o idioma pela prosa editável; ignore código, comandos, dados, URLs, frontmatter,
+nomes próprios e citações protegidas. Não aplique regras pt-BR a outro idioma e
+não use um fallback editorial genérico.
+
+Em documentos mistos, revise apenas segmentos claramente em pt-BR. Preserve
+integralmente prosa estrangeira, citações e trechos cuja fronteira linguística
+seja incerta. Estrangeirismo técnico ou regionalismo isolado não muda o idioma
+do trecho.
+
+### Idioma não suportado
+
+- Texto colado: não reescreva; informe brevemente que esta versão suporta
+  somente pt-BR.
+- Arquivo: não escreva no arquivo; informe que nenhuma alteração foi realizada.
+- Embutido: retorne a entrada exatamente como recebida, sem comentário.
+
+### Idioma ambíguo
+
+- Texto colado: preserve e peça identificação do idioma ou mais contexto.
+- Arquivo: não escreva; informe que não foi possível identificar o idioma com
+  segurança.
+- Embutido: retorne a entrada exatamente como recebida, sem comentário.
+
+Não traduza silenciosamente. Se o pedido combinar tradução e refinamento,
+informe no modo conversacional que a tradução precisa ocorrer antes; no modo
+embutido, preserve a entrada.
+
 ## Fluxo
 
 1. Confirme que há texto ou um arquivo legível para revisar.

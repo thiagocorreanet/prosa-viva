@@ -196,6 +196,24 @@ npx skills add . --list
 A saída deve incluir `refinar-prosa`. A instalação e a remoção propriamente
 ditas serão documentadas depois do teste completo da #21.
 
+## Idiomas suportados
+
+A série `0.1.x` suporta oficialmente apenas português brasileiro. Textos em
+outro idioma não recebem uma revisão parcial ou genérica.
+
+- Em texto colado, a entrada é preservada e o limite é informado brevemente.
+- Em arquivo, nenhuma escrita é realizada.
+- No modo embutido, a entrada é devolvida exatamente como recebida.
+- Em documentos mistos, somente segmentos claramente pt-BR são revisados;
+  citações, código e prosa estrangeira permanecem intactos.
+
+Se o idioma for ambíguo, os modos conversacionais pedem contexto sem editar; o
+modo embutido preserva a entrada. Tradução não faz parte de `$refinar-prosa`.
+
+Uma futura localidade terá referências, pesquisa, exemplos e avaliações próprias
+em `references/<locale>/`; contrato editorial e proteção factual continuarão no
+núcleo comum.
+
 ## Roadmap
 
 | Etapa | Entregas | Issues |
