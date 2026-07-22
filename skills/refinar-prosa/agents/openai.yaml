@@ -1,0 +1,7 @@
+interface:
+  display_name: "Refinar Prosa"
+  short_description: "Revise prosa em pt-BR sem perder fatos ou voz"
+  default_prompt: "Use $refinar-prosa para revisar o texto abaixo em português brasileiro, preservando fatos, estrutura e voz."
+
+policy:
+  allow_implicit_invocation: true
