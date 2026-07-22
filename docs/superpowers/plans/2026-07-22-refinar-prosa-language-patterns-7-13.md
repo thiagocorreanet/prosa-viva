@@ -4,16 +4,16 @@
 
 **Goal:** Implementar os padrões de linguagem e gramática 7–13 em uma referência canônica para pt-BR, com roteamento direto no `SKILL.md` e resumo sincronizado no README.
 
-**Architecture:** `skills/refinar-prosa/references/linguagem.md` conterá regras, limites, exemplos e inventários factuais. `SKILL.md` terá apenas o mapa de roteamento, e o README repetirá somente números e nomes; validações estáticas garantirão que a sequência 7–13 permaneça idêntica nos três arquivos.
+**Architecture:** `skills/refinar-prosa/references/pt-BR/linguagem.md` conterá regras, limites, exemplos e inventários factuais. `SKILL.md` terá apenas o mapa de roteamento, e o README repetirá somente números e nomes; validações estáticas garantirão que a sequência 7–13 permaneça idêntica nos três arquivos.
 
 **Tech Stack:** Markdown, frontmatter YAML, Python 3, expressões regulares, `rg`, validador de Agent Skills e validador de plugins Codex.
 
 ## Global Constraints
 
 - As implementações da #3 e da #5 são pré-condições obrigatórias.
-- Criar somente `skills/refinar-prosa/references/linguagem.md` e modificar somente `skills/refinar-prosa/SKILL.md` e `README.md` como arquivos do produto.
+- Criar somente `skills/refinar-prosa/references/pt-BR/linguagem.md` e modificar somente `skills/refinar-prosa/SKILL.md` e `README.md` como arquivos do produto.
 - A referência é a única fonte canônica de regras, sinais, limites e exemplos.
-- O `SKILL.md` deve ligar diretamente `references/linguagem.md`, sem encadeamento intermediário.
+- O `SKILL.md` deve ligar diretamente `references/pt-BR/linguagem.md`, sem encadeamento intermediário.
 - README e `SKILL.md` repetem somente os números e nomes estáveis.
 - Os padrões devem permanecer numerados exatamente de 7 a 13 na sequência global.
 - Palavra, verbo, pontuação ou construção isolada não comprova um padrão.
@@ -32,7 +32,7 @@
 
 | Arquivo | Responsabilidade |
 | --- | --- |
-| `skills/refinar-prosa/references/linguagem.md` | Fonte canônica dos padrões 7–13. |
+| `skills/refinar-prosa/references/pt-BR/linguagem.md` | Fonte canônica dos padrões 7–13. |
 | `skills/refinar-prosa/SKILL.md` | Triagem, nomes estáveis e ligação direta. |
 | `README.md` | Resumo público sincronizado dos nomes. |
 
@@ -41,8 +41,8 @@
 ### Task 1: Criar a referência canônica dos padrões 7–13
 
 **Files:**
-- Create: `skills/refinar-prosa/references/linguagem.md`
-- Test: `skills/refinar-prosa/references/linguagem.md`
+- Create: `skills/refinar-prosa/references/pt-BR/linguagem.md`
+- Test: `skills/refinar-prosa/references/pt-BR/linguagem.md`
 
 **Interfaces:**
 - Consumes: contrato editorial da #3 e estrutura de catálogo da #5.
@@ -61,7 +61,7 @@ required = [
     "## Contrato editorial",
     "## Seleção do modo",
     "## Ciclo interno",
-    "references/conteudo.md",
+    "references/pt-BR/conteudo.md",
 ]
 missing = [item for item in required if item not in skill]
 print("\n".join(missing))
@@ -77,14 +77,14 @@ da #3 e da #5, nessa ordem.
 Run:
 
 ```bash
-python3 -c 'from pathlib import Path; p=Path("skills/refinar-prosa/references/linguagem.md"); print("linguagem.md not found") if not p.is_file() else None; raise SystemExit(not p.is_file())'
+python3 -c 'from pathlib import Path; p=Path("skills/refinar-prosa/references/pt-BR/linguagem.md"); print("linguagem.md not found") if not p.is_file() else None; raise SystemExit(not p.is_file())'
 ```
 
 Expected: exit code `1` e saída `linguagem.md not found`.
 
 - [ ] **Step 3: Criar a referência canônica**
 
-Use `apply_patch` para criar `skills/refinar-prosa/references/linguagem.md` com
+Use `apply_patch` para criar `skills/refinar-prosa/references/pt-BR/linguagem.md` com
 este conteúdo:
 
 ````markdown
@@ -435,7 +435,7 @@ python3 - <<'PY'
 from pathlib import Path
 import re
 
-text = Path("skills/refinar-prosa/references/linguagem.md").read_text()
+text = Path("skills/refinar-prosa/references/pt-BR/linguagem.md").read_text()
 expected = [
     (7, "Vocabulário recorrente sem função"),
     (8, "Substituição artificial de verbos simples"),
@@ -473,7 +473,7 @@ Expected: exit code `0` e saída `language reference: ok`.
 - [ ] **Step 5: Commitar a referência**
 
 ```bash
-git add skills/refinar-prosa/references/linguagem.md
+git add skills/refinar-prosa/references/pt-BR/linguagem.md
 git commit -m "feat: add language patterns 7-13"
 ```
 
@@ -486,7 +486,7 @@ git commit -m "feat: add language patterns 7-13"
 - Test: `README.md`
 
 **Interfaces:**
-- Consumes: os sete nomes estáveis e `references/linguagem.md` da Task 1.
+- Consumes: os sete nomes estáveis e `references/pt-BR/linguagem.md` da Task 1.
 - Produces: triagem da skill e catálogo público sincronizados com a referência.
 
 - [ ] **Step 1: Executar a verificação negativa de roteamento**
@@ -504,8 +504,8 @@ for path, text in [("SKILL.md", skill), ("README.md", readme)]:
     for number in range(7, 14):
         if f"{number} —" not in text:
             missing.append(f"{path}: {number}")
-if "references/linguagem.md" not in skill:
-    missing.append("SKILL.md: references/linguagem.md")
+if "references/pt-BR/linguagem.md" not in skill:
+    missing.append("SKILL.md: references/pt-BR/linguagem.md")
 print("\n".join(missing))
 raise SystemExit(not missing)
 PY
@@ -531,7 +531,7 @@ Use `apply_patch` para acrescentar, junto ao mapa de padrões 1–6, esta seçã
 Se a leitura encontrar recorrência lexical sem função, substituição artificial
 de verbos simples, paralelismo negativo, tríade decorativa, variação lexical que
 reduz precisão, intervalo sem escala real ou agente relevante oculto, leia
-[`references/linguagem.md`](references/linguagem.md) antes do rascunho.
+[`references/pt-BR/linguagem.md`](references/pt-BR/linguagem.md) antes do rascunho.
 ```
 
 - [ ] **Step 3: Adicionar o resumo ao README**
@@ -568,7 +568,7 @@ expected = [
     (12, "Intervalos falsos"),
     (13, "Agente oculto sem necessidade"),
 ]
-reference = Path("skills/refinar-prosa/references/linguagem.md").read_text()
+reference = Path("skills/refinar-prosa/references/pt-BR/linguagem.md").read_text()
 skill = Path("skills/refinar-prosa/SKILL.md").read_text()
 readme = Path("README.md").read_text()
 assert [(int(n), name) for n, name in re.findall(r"^## (\d+) — (.+)$", reference, re.M)] == expected
@@ -576,7 +576,7 @@ for number, name in expected:
     needle = f"{number} — {name}"
     assert skill.count(needle) == 1, ("SKILL.md", needle, skill.count(needle))
     assert readme.count(needle) == 1, ("README.md", needle, readme.count(needle))
-assert "[references/linguagem.md](references/linguagem.md)" in skill
+assert "[references/pt-BR/linguagem.md](references/pt-BR/linguagem.md)" in skill
 print("language routing: ok")
 PY
 ```
@@ -595,8 +595,8 @@ git commit -m "docs: route language patterns"
 **Files:**
 - Test: `.codex-plugin/plugin.json`
 - Test: `skills/refinar-prosa/SKILL.md`
-- Test: `skills/refinar-prosa/references/conteudo.md`
-- Test: `skills/refinar-prosa/references/linguagem.md`
+- Test: `skills/refinar-prosa/references/pt-BR/conteudo.md`
+- Test: `skills/refinar-prosa/references/pt-BR/linguagem.md`
 - Test: `README.md`
 
 **Interfaces:**
@@ -612,8 +612,8 @@ python3 - <<'PY'
 from pathlib import Path
 import re
 
-content = Path("skills/refinar-prosa/references/conteudo.md").read_text()
-language = Path("skills/refinar-prosa/references/linguagem.md").read_text()
+content = Path("skills/refinar-prosa/references/pt-BR/conteudo.md").read_text()
+language = Path("skills/refinar-prosa/references/pt-BR/linguagem.md").read_text()
 numbers = [int(n) for n in re.findall(r"^## (\d+) —", content + "\n" + language, re.M)]
 assert numbers == list(range(1, 14)), numbers
 assert language.count("### Antes") == 7
@@ -635,7 +635,7 @@ Run:
 python3 - <<'PY'
 from pathlib import Path
 
-text = Path("skills/refinar-prosa/references/linguagem.md").read_text()
+text = Path("skills/refinar-prosa/references/pt-BR/linguagem.md").read_text()
 required = [
     "Palavra, verbo, pontuação ou construção isolada não comprova um padrão",
     "Não transfira automaticamente",
@@ -692,7 +692,7 @@ Se e somente se os passos anteriores exigirem correção nos três arquivos em
 escopo:
 
 ```bash
-git add skills/refinar-prosa/references/linguagem.md skills/refinar-prosa/SKILL.md README.md
+git add skills/refinar-prosa/references/pt-BR/linguagem.md skills/refinar-prosa/SKILL.md README.md
 git commit -m "fix: validate language pattern catalog"
 ```
 

@@ -27,7 +27,7 @@ README.md
 
 Responsabilidades:
 
-- `skills/refinar-prosa/references/formatacao.md`: fonte canônica dos padrões
+- `skills/refinar-prosa/references/pt-BR/formatacao.md`: fonte canônica dos padrões
   14–19, seus limites, exemplos e regras de preservação estrutural.
 - `skills/refinar-prosa/SKILL.md`: mapa de números e nomes, sinais para triagem
   e ligação direta para a referência.

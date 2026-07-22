@@ -29,7 +29,7 @@ README.md
 
 Responsabilidades:
 
-- `skills/refinar-prosa/references/linguagem.md`: única fonte canônica dos
+- `skills/refinar-prosa/references/pt-BR/linguagem.md`: única fonte canônica dos
   nomes, regras, limites e exemplos dos padrões 7–13.
 - `skills/refinar-prosa/SKILL.md`: mapa curto com números, nomes, famílias de
   sinais e ligação direta para a referência.
@@ -316,7 +316,7 @@ estava identificado no contexto.
 ## Integração no fluxo da skill
 
 Durante a leitura, a skill identifica sinais candidatos e carrega
-`references/linguagem.md` somente quando algum deles for relevante. Durante a
+`references/pt-BR/linguagem.md` somente quando algum deles for relevante. Durante a
 auditoria factual e estilística, verifica também:
 
 - se algum termo técnico ou nome próprio foi substituído;

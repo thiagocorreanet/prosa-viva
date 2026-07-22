@@ -14,7 +14,7 @@ funcionar mesmo sem amostra autoral.
 
 ## Decisão de arquitetura
 
-As regras ficarão em `skills/refinar-prosa/references/comunicacao.md`, em
+As regras ficarão em `skills/refinar-prosa/references/pt-BR/comunicacao.md`, em
 paralelo às famílias anteriores. O `SKILL.md` manterá somente triagem, números,
 nomes e ligação direta; o README terá o resumo público.
 

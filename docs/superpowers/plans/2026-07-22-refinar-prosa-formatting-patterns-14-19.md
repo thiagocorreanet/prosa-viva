@@ -4,16 +4,16 @@
 
 **Goal:** Implementar os padrões de formatação e estilo visual 14–19 em uma referência canônica, preservando estrutura e seguindo as convenções observadas no documento.
 
-**Architecture:** `skills/refinar-prosa/references/formatacao.md` concentrará regras contextuais e exemplos. `SKILL.md` fará triagem e ligação direta, enquanto o README repetirá apenas números e nomes; verificações estáticas protegerão Markdown e a sequência global do catálogo.
+**Architecture:** `skills/refinar-prosa/references/pt-BR/formatacao.md` concentrará regras contextuais e exemplos. `SKILL.md` fará triagem e ligação direta, enquanto o README repetirá apenas números e nomes; verificações estáticas protegerão Markdown e a sequência global do catálogo.
 
 **Tech Stack:** Markdown, frontmatter YAML, Python 3, expressões regulares, `rg`, validador de Agent Skills e validador de plugins Codex.
 
 ## Global Constraints
 
 - As implementações da #3 e da #5 são pré-condições obrigatórias.
-- Criar somente `skills/refinar-prosa/references/formatacao.md` e modificar somente `skills/refinar-prosa/SKILL.md` e `README.md` como arquivos do produto.
+- Criar somente `skills/refinar-prosa/references/pt-BR/formatacao.md` e modificar somente `skills/refinar-prosa/SKILL.md` e `README.md` como arquivos do produto.
 - A referência é a única fonte canônica de regras, limites e exemplos dos padrões 14–19.
-- O `SKILL.md` deve ligar diretamente `references/formatacao.md`.
+- O `SKILL.md` deve ligar diretamente `references/pt-BR/formatacao.md`.
 - Os padrões devem permanecer numerados exatamente de 14 a 19 na sequência global.
 - Seguir, nesta ordem: instrução explícita, convenção do documento, amostra do autor, convenção do gênero/idioma e preferência padrão da skill.
 - Não banir pontuação, negrito, listas, capitalização, emojis ou aspas de forma absoluta.
@@ -28,7 +28,7 @@
 
 | Arquivo | Responsabilidade |
 | --- | --- |
-| `skills/refinar-prosa/references/formatacao.md` | Fonte canônica dos padrões 14–19 e do contrato visual. |
+| `skills/refinar-prosa/references/pt-BR/formatacao.md` | Fonte canônica dos padrões 14–19 e do contrato visual. |
 | `skills/refinar-prosa/SKILL.md` | Triagem, nomes estáveis e ligação direta. |
 | `README.md` | Resumo público sincronizado dos nomes. |
 
@@ -37,8 +37,8 @@
 ### Task 1: Criar a referência canônica dos padrões 14–19
 
 **Files:**
-- Create: `skills/refinar-prosa/references/formatacao.md`
-- Test: `skills/refinar-prosa/references/formatacao.md`
+- Create: `skills/refinar-prosa/references/pt-BR/formatacao.md`
+- Test: `skills/refinar-prosa/references/pt-BR/formatacao.md`
 
 **Interfaces:**
 - Consumes: contrato editorial da #3 e estrutura de catálogo da #5.
@@ -53,10 +53,10 @@ python3 - <<'PY'
 from pathlib import Path
 
 skill = Path("skills/refinar-prosa/SKILL.md").read_text()
-required = ["## Contrato editorial", "## Seleção do modo", "references/conteudo.md"]
+required = ["## Contrato editorial", "## Seleção do modo", "references/pt-BR/conteudo.md"]
 missing = [item for item in required if item not in skill]
 assert not missing, missing
-path = Path("skills/refinar-prosa/references/formatacao.md")
+path = Path("skills/refinar-prosa/references/pt-BR/formatacao.md")
 assert not path.exists(), path
 print("formatting preconditions: ok")
 PY
@@ -66,7 +66,7 @@ Expected: exit code `0` e saída `formatting preconditions: ok`.
 
 - [ ] **Step 2: Criar a referência**
 
-Use `apply_patch` para criar `skills/refinar-prosa/references/formatacao.md` com
+Use `apply_patch` para criar `skills/refinar-prosa/references/pt-BR/formatacao.md` com
 este conteúdo:
 
 ````markdown
@@ -378,7 +378,7 @@ python3 - <<'PY'
 from pathlib import Path
 import re
 
-text = Path("skills/refinar-prosa/references/formatacao.md").read_text()
+text = Path("skills/refinar-prosa/references/pt-BR/formatacao.md").read_text()
 expected = [
     (14, "Travessões formulaicos ou excessivos"),
     (15, "Negrito mecânico"),
@@ -405,7 +405,7 @@ Expected: exit code `0` e saída `formatting reference: ok`.
 - [ ] **Step 4: Commitar a referência**
 
 ```bash
-git add skills/refinar-prosa/references/formatacao.md
+git add skills/refinar-prosa/references/pt-BR/formatacao.md
 git commit -m "feat: add formatting patterns 14-19"
 ```
 
@@ -433,8 +433,8 @@ skill = Path("skills/refinar-prosa/SKILL.md").read_text()
 readme = Path("README.md").read_text()
 missing = [f"SKILL.md: {n}" for n in range(14, 20) if f"{n} —" not in skill]
 missing += [f"README.md: {n}" for n in range(14, 20) if f"{n} —" not in readme]
-if "references/formatacao.md" not in skill:
-    missing.append("SKILL.md: references/formatacao.md")
+if "references/pt-BR/formatacao.md" not in skill:
+    missing.append("SKILL.md: references/pt-BR/formatacao.md")
 print("\n".join(missing))
 raise SystemExit(not missing)
 PY
@@ -459,7 +459,7 @@ Use `apply_patch` para acrescentar junto aos grupos anteriores:
 Se a leitura encontrar repetição formulaica de travessões, negrito mecânico,
 lista vertical sem função, capitalização incompatível, emoji decorativo ou
 aspas inconsistentes, leia
-[`references/formatacao.md`](references/formatacao.md) antes do rascunho.
+[`references/pt-BR/formatacao.md`](references/pt-BR/formatacao.md) antes do rascunho.
 ```
 
 - [ ] **Step 3: Adicionar o resumo ao README**
@@ -494,7 +494,7 @@ expected = [
     (18, "Emojis decorativos"),
     (19, "Convenção de aspas inconsistente"),
 ]
-reference = Path("skills/refinar-prosa/references/formatacao.md").read_text()
+reference = Path("skills/refinar-prosa/references/pt-BR/formatacao.md").read_text()
 skill = Path("skills/refinar-prosa/SKILL.md").read_text()
 readme = Path("README.md").read_text()
 assert [(int(n), name) for n, name in re.findall(r"^## (\d+) — (.+)$", reference, re.M)] == expected
@@ -502,7 +502,7 @@ for number, name in expected:
     needle = f"{number} — {name}"
     assert skill.count(needle) == 1, ("SKILL.md", needle)
     assert readme.count(needle) == 1, ("README.md", needle)
-assert "[references/formatacao.md](references/formatacao.md)" in skill
+assert "[references/pt-BR/formatacao.md](references/pt-BR/formatacao.md)" in skill
 print("formatting routing: ok")
 PY
 ```
@@ -521,9 +521,9 @@ git commit -m "docs: route formatting patterns"
 **Files:**
 - Test: `.codex-plugin/plugin.json`
 - Test: `skills/refinar-prosa/SKILL.md`
-- Test: `skills/refinar-prosa/references/conteudo.md`
-- Test: `skills/refinar-prosa/references/linguagem.md`
-- Test: `skills/refinar-prosa/references/formatacao.md`
+- Test: `skills/refinar-prosa/references/pt-BR/conteudo.md`
+- Test: `skills/refinar-prosa/references/pt-BR/linguagem.md`
+- Test: `skills/refinar-prosa/references/pt-BR/formatacao.md`
 - Test: `README.md`
 
 **Interfaces:**
@@ -540,9 +540,9 @@ from pathlib import Path
 import re
 
 paths = [
-    "skills/refinar-prosa/references/conteudo.md",
-    "skills/refinar-prosa/references/linguagem.md",
-    "skills/refinar-prosa/references/formatacao.md",
+    "skills/refinar-prosa/references/pt-BR/conteudo.md",
+    "skills/refinar-prosa/references/pt-BR/linguagem.md",
+    "skills/refinar-prosa/references/pt-BR/formatacao.md",
 ]
 text = "\n".join(Path(path).read_text() for path in paths)
 numbers = [int(n) for n in re.findall(r"^## (\d+) —", text, re.M)]
@@ -587,7 +587,7 @@ nenhum arquivo inesperado no status.
 Se e somente se a validação exigir correção nos três arquivos em escopo:
 
 ```bash
-git add skills/refinar-prosa/references/formatacao.md skills/refinar-prosa/SKILL.md README.md
+git add skills/refinar-prosa/references/pt-BR/formatacao.md skills/refinar-prosa/SKILL.md README.md
 git commit -m "fix: validate formatting pattern catalog"
 ```
 

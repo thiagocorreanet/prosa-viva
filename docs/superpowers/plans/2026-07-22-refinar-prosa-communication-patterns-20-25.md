@@ -4,16 +4,16 @@
 
 **Goal:** Implementar os padrões de comunicação, preenchimento e hesitação 20–25 sem apagar correspondência legítima, incerteza real ou cautela material.
 
-**Architecture:** `skills/refinar-prosa/references/comunicacao.md` será a fonte canônica do grupo. `SKILL.md` fará triagem e ligação direta, o README repetirá apenas os nomes, e testes estáticos verificarão confiança, atribuição, gêneros protegidos e sequência global.
+**Architecture:** `skills/refinar-prosa/references/pt-BR/comunicacao.md` será a fonte canônica do grupo. `SKILL.md` fará triagem e ligação direta, o README repetirá apenas os nomes, e testes estáticos verificarão confiança, atribuição, gêneros protegidos e sequência global.
 
 **Tech Stack:** Markdown, frontmatter YAML, Python 3, expressões regulares, `rg`, validador de Agent Skills e validador de plugins Codex.
 
 ## Global Constraints
 
 - As implementações da #3 e da #5 são pré-condições obrigatórias.
-- Criar somente `skills/refinar-prosa/references/comunicacao.md` e modificar somente `skills/refinar-prosa/SKILL.md` e `README.md` como arquivos do produto.
+- Criar somente `skills/refinar-prosa/references/pt-BR/comunicacao.md` e modificar somente `skills/refinar-prosa/SKILL.md` e `README.md` como arquivos do produto.
 - A referência é a única fonte canônica dos padrões 20–25.
-- O `SKILL.md` deve ligar diretamente `references/comunicacao.md`.
+- O `SKILL.md` deve ligar diretamente `references/pt-BR/comunicacao.md`.
 - Os padrões devem permanecer numerados exatamente de 20 a 25.
 - Preservar incerteza, escopo, modalidade, atribuição e cautela material.
 - Não inventar fonte, consenso, vigência, atualização, fato ou certeza.
@@ -28,7 +28,7 @@
 
 | Arquivo | Responsabilidade |
 | --- | --- |
-| `skills/refinar-prosa/references/comunicacao.md` | Fonte canônica dos padrões 20–25 e da regra de confiança. |
+| `skills/refinar-prosa/references/pt-BR/comunicacao.md` | Fonte canônica dos padrões 20–25 e da regra de confiança. |
 | `skills/refinar-prosa/SKILL.md` | Triagem, nomes estáveis e ligação direta. |
 | `README.md` | Resumo público sincronizado dos nomes. |
 
@@ -37,8 +37,8 @@
 ### Task 1: Criar a referência canônica dos padrões 20–25
 
 **Files:**
-- Create: `skills/refinar-prosa/references/comunicacao.md`
-- Test: `skills/refinar-prosa/references/comunicacao.md`
+- Create: `skills/refinar-prosa/references/pt-BR/comunicacao.md`
+- Test: `skills/refinar-prosa/references/pt-BR/comunicacao.md`
 
 **Interfaces:**
 - Consumes: contrato editorial da #3 e estrutura de catálogo da #5.
@@ -53,10 +53,10 @@ python3 - <<'PY'
 from pathlib import Path
 
 skill = Path("skills/refinar-prosa/SKILL.md").read_text()
-required = ["## Contrato editorial", "## Seleção do modo", "references/conteudo.md"]
+required = ["## Contrato editorial", "## Seleção do modo", "references/pt-BR/conteudo.md"]
 missing = [item for item in required if item not in skill]
 assert not missing, missing
-path = Path("skills/refinar-prosa/references/comunicacao.md")
+path = Path("skills/refinar-prosa/references/pt-BR/comunicacao.md")
 assert not path.exists(), path
 print("communication preconditions: ok")
 PY
@@ -66,7 +66,7 @@ Expected: exit code `0` e saída `communication preconditions: ok`.
 
 - [ ] **Step 2: Criar a referência**
 
-Use `apply_patch` para criar `skills/refinar-prosa/references/comunicacao.md`
+Use `apply_patch` para criar `skills/refinar-prosa/references/pt-BR/comunicacao.md`
 com este conteúdo:
 
 ````markdown
@@ -373,7 +373,7 @@ python3 - <<'PY'
 from pathlib import Path
 import re
 
-text = Path("skills/refinar-prosa/references/comunicacao.md").read_text()
+text = Path("skills/refinar-prosa/references/pt-BR/comunicacao.md").read_text()
 expected = [
     (20, "Artefatos de chatbot e ofertas de continuação"),
     (21, "Avisos de limite de conhecimento e preenchimento especulativo"),
@@ -400,7 +400,7 @@ Expected: exit code `0` e saída `communication reference: ok`.
 - [ ] **Step 4: Commitar a referência**
 
 ```bash
-git add skills/refinar-prosa/references/comunicacao.md
+git add skills/refinar-prosa/references/pt-BR/comunicacao.md
 git commit -m "feat: add communication patterns 20-25"
 ```
 
@@ -428,8 +428,8 @@ skill = Path("skills/refinar-prosa/SKILL.md").read_text()
 readme = Path("README.md").read_text()
 missing = [f"SKILL.md: {n}" for n in range(20, 26) if f"{n} —" not in skill]
 missing += [f"README.md: {n}" for n in range(20, 26) if f"{n} —" not in readme]
-if "references/comunicacao.md" not in skill:
-    missing.append("SKILL.md: references/comunicacao.md")
+if "references/pt-BR/comunicacao.md" not in skill:
+    missing.append("SKILL.md: references/pt-BR/comunicacao.md")
 print("\n".join(missing))
 raise SystemExit(not missing)
 PY
@@ -454,7 +454,7 @@ Use `apply_patch` para acrescentar junto aos grupos anteriores:
 Se a leitura encontrar resíduo de chatbot, especulação sobre informação
 ausente, servilismo, preenchimento, ressalvas redundantes ou conclusão positiva
 sem suporte, leia
-[`references/comunicacao.md`](references/comunicacao.md) antes do rascunho.
+[`references/pt-BR/comunicacao.md`](references/pt-BR/comunicacao.md) antes do rascunho.
 ```
 
 - [ ] **Step 3: Adicionar o resumo ao README**
@@ -489,7 +489,7 @@ expected = [
     (24, "Empilhamento de ressalvas"),
     (25, "Conclusões positivas genéricas"),
 ]
-reference = Path("skills/refinar-prosa/references/comunicacao.md").read_text()
+reference = Path("skills/refinar-prosa/references/pt-BR/comunicacao.md").read_text()
 skill = Path("skills/refinar-prosa/SKILL.md").read_text()
 readme = Path("README.md").read_text()
 assert [(int(n), name) for n, name in re.findall(r"^## (\d+) — (.+)$", reference, re.M)] == expected
@@ -497,7 +497,7 @@ for number, name in expected:
     needle = f"{number} — {name}"
     assert skill.count(needle) == 1, ("SKILL.md", needle)
     assert readme.count(needle) == 1, ("README.md", needle)
-assert "[references/comunicacao.md](references/comunicacao.md)" in skill
+assert "[references/pt-BR/comunicacao.md](references/pt-BR/comunicacao.md)" in skill
 print("communication routing: ok")
 PY
 ```
@@ -533,10 +533,10 @@ from pathlib import Path
 import re
 
 paths = [
-    "skills/refinar-prosa/references/conteudo.md",
-    "skills/refinar-prosa/references/linguagem.md",
-    "skills/refinar-prosa/references/formatacao.md",
-    "skills/refinar-prosa/references/comunicacao.md",
+    "skills/refinar-prosa/references/pt-BR/conteudo.md",
+    "skills/refinar-prosa/references/pt-BR/linguagem.md",
+    "skills/refinar-prosa/references/pt-BR/formatacao.md",
+    "skills/refinar-prosa/references/pt-BR/comunicacao.md",
 ]
 text = "\n".join(Path(path).read_text() for path in paths)
 numbers = [int(n) for n in re.findall(r"^## (\d+) —", text, re.M)]
@@ -581,7 +581,7 @@ nenhum arquivo inesperado no status.
 Se e somente se a validação exigir correção nos três arquivos em escopo:
 
 ```bash
-git add skills/refinar-prosa/references/comunicacao.md skills/refinar-prosa/SKILL.md README.md
+git add skills/refinar-prosa/references/pt-BR/comunicacao.md skills/refinar-prosa/SKILL.md README.md
 git commit -m "fix: validate communication pattern catalog"
 ```
 

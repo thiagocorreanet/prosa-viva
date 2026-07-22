@@ -28,7 +28,7 @@ README.md
 
 Responsabilidades:
 
-- `skills/refinar-prosa/references/conteudo.md`: única fonte canônica dos nomes,
+- `skills/refinar-prosa/references/pt-BR/conteudo.md`: única fonte canônica dos nomes,
   regras, limites, exemplos e inventários factuais dos padrões 1–6.
 - `skills/refinar-prosa/SKILL.md`: mapa curto com os seis nomes, famílias de
   sinais e ligação direta para a referência.
@@ -391,7 +391,7 @@ prazos ou conteúdo do cronograma.
 ## Roteamento no SKILL.md
 
 O `SKILL.md` terá uma seção curta com os seis números e nomes e uma ligação
-direta para `references/conteudo.md`. A instrução será:
+direta para `references/pt-BR/conteudo.md`. A instrução será:
 
 - fazer uma triagem contextual pelas seis famílias;
 - ler a referência inteira quando houver ao menos um sinal candidato;
@@ -420,7 +420,7 @@ ser ligada para leitores que desejarem detalhes.
 
 A validação extrairá números e nomes de três locais:
 
-- títulos `## N — Nome` de `references/conteudo.md`;
+- títulos `## N — Nome` de `references/pt-BR/conteudo.md`;
 - lista numerada do mapa no `SKILL.md`;
 - lista numerada da subseção no README.
 
@@ -468,5 +468,5 @@ A implementação deve executar:
 - Termos isolados são sinais candidatos, nunca prova suficiente.
 - O `SKILL.md` liga diretamente a referência e define roteamento contextual.
 - O README resume os mesmos seis números e nomes sem duplicar o catálogo.
-- A implementação modifica somente `SKILL.md`, `references/conteudo.md` e
+- A implementação modifica somente `SKILL.md`, `references/pt-BR/conteudo.md` e
   `README.md`, depois da implementação da #3.

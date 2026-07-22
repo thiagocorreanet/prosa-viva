@@ -4,16 +4,16 @@
 
 **Goal:** Implementar os padrões de conteúdo 1–6 em uma referência canônica para pt-BR, com roteamento direto no `SKILL.md` e resumo sincronizado no README.
 
-**Architecture:** `skills/refinar-prosa/references/conteudo.md` conterá regras, limites, exemplos e inventários factuais. `SKILL.md` terá apenas o mapa de roteamento, e o README repetirá somente números e nomes; validações estáticas garantirão que as três sequências permaneçam idênticas.
+**Architecture:** `skills/refinar-prosa/references/pt-BR/conteudo.md` conterá regras, limites, exemplos e inventários factuais. `SKILL.md` terá apenas o mapa de roteamento, e o README repetirá somente números e nomes; validações estáticas garantirão que as três sequências permaneçam idênticas.
 
 **Tech Stack:** Markdown, frontmatter YAML, Python 3, expressões regulares, `rg`, validador de Agent Skills e validador de plugins Codex.
 
 ## Global Constraints
 
 - A implementação da #3 é pré-condição obrigatória.
-- Criar somente `skills/refinar-prosa/references/conteudo.md` e modificar somente `skills/refinar-prosa/SKILL.md` e `README.md` como arquivos do produto.
+- Criar somente `skills/refinar-prosa/references/pt-BR/conteudo.md` e modificar somente `skills/refinar-prosa/SKILL.md` e `README.md` como arquivos do produto.
 - A referência é a única fonte canônica de regras, sinais, limites e exemplos.
-- O `SKILL.md` deve ligar diretamente `references/conteudo.md`, sem encadeamento intermediário.
+- O `SKILL.md` deve ligar diretamente `references/pt-BR/conteudo.md`, sem encadeamento intermediário.
 - README e `SKILL.md` repetem somente os números e nomes estáveis.
 - Os padrões devem permanecer numerados exatamente de 1 a 6.
 - Nenhuma palavra ou expressão isolada comprova um padrão.
@@ -27,7 +27,7 @@
 
 | Arquivo | Responsabilidade |
 | --- | --- |
-| `skills/refinar-prosa/references/conteudo.md` | Fonte canônica dos padrões 1–6. |
+| `skills/refinar-prosa/references/pt-BR/conteudo.md` | Fonte canônica dos padrões 1–6. |
 | `skills/refinar-prosa/SKILL.md` | Triagem, nomes estáveis e ligação direta. |
 | `README.md` | Resumo público sincronizado dos nomes. |
 
@@ -36,8 +36,8 @@
 ### Task 1: Criar a referência canônica dos padrões 1–6
 
 **Files:**
-- Create: `skills/refinar-prosa/references/conteudo.md`
-- Test: `skills/refinar-prosa/references/conteudo.md`
+- Create: `skills/refinar-prosa/references/pt-BR/conteudo.md`
+- Test: `skills/refinar-prosa/references/pt-BR/conteudo.md`
 
 **Interfaces:**
 - Consumes: contrato editorial implementado pela #3 e candidatos contextuais identificados pelo `SKILL.md`.
@@ -59,7 +59,7 @@ Expected: exit code `0` e nenhuma saída. Se falhar, execute primeiro
 Run:
 
 ```bash
-python3 -c 'from pathlib import Path; p=Path("skills/refinar-prosa/references/conteudo.md"); print("conteudo.md not found") if not p.is_file() else None; raise SystemExit(not p.is_file())'
+python3 -c 'from pathlib import Path; p=Path("skills/refinar-prosa/references/pt-BR/conteudo.md"); print("conteudo.md not found") if not p.is_file() else None; raise SystemExit(not p.is_file())'
 ```
 
 Expected: exit code `1` e saída `conteudo.md not found`.
@@ -67,7 +67,7 @@ Expected: exit code `1` e saída `conteudo.md not found`.
 - [ ] **Step 3: Criar a referência canônica**
 
 Use `apply_patch` para criar
-`skills/refinar-prosa/references/conteudo.md` com este conteúdo:
+`skills/refinar-prosa/references/pt-BR/conteudo.md` com este conteúdo:
 
 ````markdown
 # Padrões de conteúdo 1–6
@@ -358,7 +358,7 @@ desafios, avanço e possibilidades; não são inventados participantes ou prazos
 Run:
 
 ```bash
-python3 -c 'from pathlib import Path; import re; s=Path("skills/refinar-prosa/references/conteudo.md").read_text(); nums=re.findall(r"^## ([1-6]) — ", s, re.M); fields=["### Problema", "### Sinais candidatos", "### Confirmação contextual", "### Não alterar quando", "### Antes", "### Depois", "### Preservação factual"]; assert nums==list("123456"), nums; assert all(s.count(x)==6 for x in fields), {x:s.count(x) for x in fields}; assert "Nenhuma palavra ou expressão isolada comprova um padrão" in s; print("content patterns valid")'
+python3 -c 'from pathlib import Path; import re; s=Path("skills/refinar-prosa/references/pt-BR/conteudo.md").read_text(); nums=re.findall(r"^## ([1-6]) — ", s, re.M); fields=["### Problema", "### Sinais candidatos", "### Confirmação contextual", "### Não alterar quando", "### Antes", "### Depois", "### Preservação factual"]; assert nums==list("123456"), nums; assert all(s.count(x)==6 for x in fields), {x:s.count(x) for x in fields}; assert "Nenhuma palavra ou expressão isolada comprova um padrão" in s; print("content patterns valid")'
 ```
 
 Expected: exit code `0` e saída `content patterns valid`.
@@ -368,7 +368,7 @@ Expected: exit code `0` e saída `content patterns valid`.
 Run:
 
 ```bash
-python3 -c 'from pathlib import Path; s=Path("skills/refinar-prosa/references/conteudo.md").read_text(); required=["biblioteca passou a abrir aos sábados", "Jornais locais e podcasts", "conselho publicou as atas", "buscar por título e filtrar por autor", "especialistas não identificados no texto", "12 de outubro para definir o cronograma"]; missing=[x for x in required if x not in s]; print("\n".join(missing)); raise SystemExit(bool(missing))'
+python3 -c 'from pathlib import Path; s=Path("skills/refinar-prosa/references/pt-BR/conteudo.md").read_text(); required=["biblioteca passou a abrir aos sábados", "Jornais locais e podcasts", "conselho publicou as atas", "buscar por título e filtrar por autor", "especialistas não identificados no texto", "12 de outubro para definir o cronograma"]; missing=[x for x in required if x not in s]; print("\n".join(missing)); raise SystemExit(bool(missing))'
 ```
 
 Expected: exit code `0` e nenhuma saída. Depois, compare manualmente cada par
@@ -378,11 +378,11 @@ de fato ausente no “Antes”.
 - [ ] **Step 6: Commitar a referência canônica**
 
 ```bash
-git add skills/refinar-prosa/references/conteudo.md
+git add skills/refinar-prosa/references/pt-BR/conteudo.md
 git commit -m "feat: add content patterns 1-6"
 ```
 
-Expected: commit criado contendo somente `references/conteudo.md`.
+Expected: commit criado contendo somente `references/pt-BR/conteudo.md`.
 
 ---
 
@@ -391,7 +391,7 @@ Expected: commit criado contendo somente `references/conteudo.md`.
 **Files:**
 - Modify: `skills/refinar-prosa/SKILL.md`
 - Modify: `README.md`
-- Test: `skills/refinar-prosa/SKILL.md`, `skills/refinar-prosa/references/conteudo.md`, `README.md`
+- Test: `skills/refinar-prosa/SKILL.md`, `skills/refinar-prosa/references/pt-BR/conteudo.md`, `README.md`
 
 **Interfaces:**
 - Consumes: os seis títulos estáveis da referência criada na Task 1.
@@ -429,7 +429,7 @@ Use `apply_patch` com este patch:
 +6. Desafios e futuro formulaicos.
 +
 +Se houver ao menos um sinal candidato, leia integralmente
-+[os padrões de conteúdo 1–6](references/conteudo.md). Aplique somente padrões
++[os padrões de conteúdo 1–6](references/pt-BR/conteudo.md). Aplique somente padrões
 +confirmados pela função do trecho, pelo contexto e pela ausência de suporte
 +factual. Uma expressão isolada nunca basta. Preserve o original em caso de
 +dúvida e audite cada edição pelo contrato factual.
@@ -459,7 +459,7 @@ Use `apply_patch` com este patch:
 +6. Desafios e futuro formulaicos.
 +
 +Os detalhes, limites e exemplos ficam na
-+[referência canônica](skills/refinar-prosa/references/conteudo.md).
++[referência canônica](skills/refinar-prosa/references/pt-BR/conteudo.md).
 +
  Os padrões não serão uma tradução mecânica de regras inglesas. A
 *** End Patch
@@ -470,7 +470,7 @@ Use `apply_patch` com este patch:
 Run:
 
 ```bash
-python3 -c 'from pathlib import Path; import re; names=["Inflação de importância e legado", "Notoriedade e cobertura sem contexto", "Análise superficial acoplada", "Promoção indevida", "Atribuição vaga e evasiva", "Desafios e futuro formulaicos"]; ref=Path("skills/refinar-prosa/references/conteudo.md").read_text(); skill=Path("skills/refinar-prosa/SKILL.md").read_text(); readme=Path("README.md").read_text(); assert [n for _,n in re.findall(r"^## ([1-6]) — (.+)$",ref,re.M)]==names; assert all(f"{i}. {n}." in skill for i,n in enumerate(names,1)); assert all(f"{i}. {n}." in readme for i,n in enumerate(names,1)); assert "(references/conteudo.md)" in skill; print("catalog synchronization valid")'
+python3 -c 'from pathlib import Path; import re; names=["Inflação de importância e legado", "Notoriedade e cobertura sem contexto", "Análise superficial acoplada", "Promoção indevida", "Atribuição vaga e evasiva", "Desafios e futuro formulaicos"]; ref=Path("skills/refinar-prosa/references/pt-BR/conteudo.md").read_text(); skill=Path("skills/refinar-prosa/SKILL.md").read_text(); readme=Path("README.md").read_text(); assert [n for _,n in re.findall(r"^## ([1-6]) — (.+)$",ref,re.M)]==names; assert all(f"{i}. {n}." in skill for i,n in enumerate(names,1)); assert all(f"{i}. {n}." in readme for i,n in enumerate(names,1)); assert "(references/pt-BR/conteudo.md)" in skill; print("catalog synchronization valid")'
 ```
 
 Expected: exit code `0` e saída `catalog synchronization valid`.
@@ -521,7 +521,7 @@ skills/refinar-prosa/SKILL.md
 Run:
 
 ```bash
-rg -n 'TBD|\[TODO:|Claude' skills/refinar-prosa/SKILL.md skills/refinar-prosa/references/conteudo.md README.md
+rg -n 'TBD|\[TODO:|Claude' skills/refinar-prosa/SKILL.md skills/refinar-prosa/references/pt-BR/conteudo.md README.md
 ```
 
 Expected: exit code `1` e nenhuma saída.

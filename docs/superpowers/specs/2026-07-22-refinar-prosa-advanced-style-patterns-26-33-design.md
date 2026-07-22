@@ -14,7 +14,7 @@ cadência autoral de fórmula, mas não é pré-condição técnica.
 
 ## Decisão de arquitetura
 
-As regras ficarão em `skills/refinar-prosa/references/estilo-avancado.md`. O
+As regras ficarão em `skills/refinar-prosa/references/pt-BR/estilo-avancado.md`. O
 `SKILL.md` fará triagem e ligação direta, e o README manterá apenas números e
 nomes.
 

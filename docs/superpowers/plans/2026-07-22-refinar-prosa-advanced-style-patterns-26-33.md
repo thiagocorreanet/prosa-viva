@@ -4,15 +4,15 @@
 
 **Goal:** Implementar os padrões avançados de estilo e cadência 26–33 e concluir a sequência global 1–33 sem apagar escolhas autorais ou histórico técnico legítimo.
 
-**Architecture:** `skills/refinar-prosa/references/estilo-avancado.md` será a fonte canônica do grupo. `SKILL.md` fará triagem e ligação direta, o README repetirá os nomes, e uma auditoria integrada verificará numeração 1–33, gêneros protegidos e preservação factual.
+**Architecture:** `skills/refinar-prosa/references/pt-BR/estilo-avancado.md` será a fonte canônica do grupo. `SKILL.md` fará triagem e ligação direta, o README repetirá os nomes, e uma auditoria integrada verificará numeração 1–33, gêneros protegidos e preservação factual.
 
 **Tech Stack:** Markdown, frontmatter YAML, Python 3, expressões regulares, `rg`, validador de Agent Skills e validador de plugins Codex.
 
 ## Global Constraints
 
 - As implementações da #3 e da #5 são pré-condições obrigatórias.
-- Criar somente `skills/refinar-prosa/references/estilo-avancado.md` e modificar somente `skills/refinar-prosa/SKILL.md` e `README.md` como arquivos do produto.
-- O `SKILL.md` deve ligar diretamente `references/estilo-avancado.md`.
+- Criar somente `skills/refinar-prosa/references/pt-BR/estilo-avancado.md` e modificar somente `skills/refinar-prosa/SKILL.md` e `README.md` como arquivos do produto.
+- O `SKILL.md` deve ligar diretamente `references/pt-BR/estilo-avancado.md`.
 - Os padrões devem permanecer numerados exatamente de 26 a 33 e completar a sequência global 1–33.
 - Reavaliar hifenização conforme o português; preservar marcas, nomes oficiais, identificadores, código, URLs e citações.
 - Não remover recurso retórico isolado sem confirmar conjunto, recorrência, gênero e voz.
@@ -26,7 +26,7 @@
 
 | Arquivo | Responsabilidade |
 | --- | --- |
-| `skills/refinar-prosa/references/estilo-avancado.md` | Fonte canônica dos padrões 26–33. |
+| `skills/refinar-prosa/references/pt-BR/estilo-avancado.md` | Fonte canônica dos padrões 26–33. |
 | `skills/refinar-prosa/SKILL.md` | Triagem, nomes estáveis e ligação direta. |
 | `README.md` | Resumo público sincronizado dos nomes. |
 
@@ -35,8 +35,8 @@
 ### Task 1: Criar a referência canônica dos padrões 26–33
 
 **Files:**
-- Create: `skills/refinar-prosa/references/estilo-avancado.md`
-- Test: `skills/refinar-prosa/references/estilo-avancado.md`
+- Create: `skills/refinar-prosa/references/pt-BR/estilo-avancado.md`
+- Test: `skills/refinar-prosa/references/pt-BR/estilo-avancado.md`
 
 **Interfaces:**
 - Consumes: contrato editorial da #3 e estrutura de catálogo da #5.
@@ -51,10 +51,10 @@ python3 - <<'PY'
 from pathlib import Path
 
 skill = Path("skills/refinar-prosa/SKILL.md").read_text()
-required = ["## Contrato editorial", "## Seleção do modo", "references/conteudo.md"]
+required = ["## Contrato editorial", "## Seleção do modo", "references/pt-BR/conteudo.md"]
 missing = [item for item in required if item not in skill]
 assert not missing, missing
-path = Path("skills/refinar-prosa/references/estilo-avancado.md")
+path = Path("skills/refinar-prosa/references/pt-BR/estilo-avancado.md")
 assert not path.exists(), path
 print("advanced style preconditions: ok")
 PY
@@ -65,7 +65,7 @@ Expected: exit code `0` e saída `advanced style preconditions: ok`.
 - [ ] **Step 2: Criar a referência**
 
 Use `apply_patch` para criar
-`skills/refinar-prosa/references/estilo-avancado.md` com este conteúdo:
+`skills/refinar-prosa/references/pt-BR/estilo-avancado.md` com este conteúdo:
 
 ````markdown
 # Padrões avançados de estilo e cadência 26–33
@@ -439,7 +439,7 @@ python3 - <<'PY'
 from pathlib import Path
 import re
 
-text = Path("skills/refinar-prosa/references/estilo-avancado.md").read_text()
+text = Path("skills/refinar-prosa/references/pt-BR/estilo-avancado.md").read_text()
 expected = [
     (26, "Hifenização imprópria em português"),
     (27, "Fórmulas de autoridade persuasiva"),
@@ -468,7 +468,7 @@ Expected: exit code `0` e saída `advanced style reference: ok`.
 - [ ] **Step 4: Commitar a referência**
 
 ```bash
-git add skills/refinar-prosa/references/estilo-avancado.md
+git add skills/refinar-prosa/references/pt-BR/estilo-avancado.md
 git commit -m "feat: add advanced style patterns 26-33"
 ```
 
@@ -496,8 +496,8 @@ skill = Path("skills/refinar-prosa/SKILL.md").read_text()
 readme = Path("README.md").read_text()
 missing = [f"SKILL.md: {n}" for n in range(26, 34) if f"{n} —" not in skill]
 missing += [f"README.md: {n}" for n in range(26, 34) if f"{n} —" not in readme]
-if "references/estilo-avancado.md" not in skill:
-    missing.append("SKILL.md: references/estilo-avancado.md")
+if "references/pt-BR/estilo-avancado.md" not in skill:
+    missing.append("SKILL.md: references/pt-BR/estilo-avancado.md")
 print("\n".join(missing))
 raise SystemExit(not missing)
 PY
@@ -524,7 +524,7 @@ Use `apply_patch` para acrescentar junto aos grupos anteriores:
 Se a leitura encontrar hifenização duvidosa, autoridade formulaica,
 metadiscurso, repetição de título, documentação presa ao histórico,
 dramatização fragmentada, aforismo impreciso ou falsa espontaneidade, leia
-[`references/estilo-avancado.md`](references/estilo-avancado.md) antes do
+[`references/pt-BR/estilo-avancado.md`](references/pt-BR/estilo-avancado.md) antes do
 rascunho.
 ```
 
@@ -564,7 +564,7 @@ expected = [
     (32, "Fórmulas aforísticas no lugar de precisão"),
     (33, "Aberturas de falsa espontaneidade"),
 ]
-reference = Path("skills/refinar-prosa/references/estilo-avancado.md").read_text()
+reference = Path("skills/refinar-prosa/references/pt-BR/estilo-avancado.md").read_text()
 skill = Path("skills/refinar-prosa/SKILL.md").read_text()
 readme = Path("README.md").read_text()
 assert [(int(n), name) for n, name in re.findall(r"^## (\d+) — (.+)$", reference, re.M)] == expected
@@ -572,7 +572,7 @@ for number, name in expected:
     needle = f"{number} — {name}"
     assert skill.count(needle) == 1, ("SKILL.md", needle)
     assert readme.count(needle) == 1, ("README.md", needle)
-assert "[references/estilo-avancado.md](references/estilo-avancado.md)" in skill
+assert "[references/pt-BR/estilo-avancado.md](references/pt-BR/estilo-avancado.md)" in skill
 print("advanced style routing: ok")
 PY
 ```
@@ -608,11 +608,11 @@ from pathlib import Path
 import re
 
 paths = [
-    "skills/refinar-prosa/references/conteudo.md",
-    "skills/refinar-prosa/references/linguagem.md",
-    "skills/refinar-prosa/references/formatacao.md",
-    "skills/refinar-prosa/references/comunicacao.md",
-    "skills/refinar-prosa/references/estilo-avancado.md",
+    "skills/refinar-prosa/references/pt-BR/conteudo.md",
+    "skills/refinar-prosa/references/pt-BR/linguagem.md",
+    "skills/refinar-prosa/references/pt-BR/formatacao.md",
+    "skills/refinar-prosa/references/pt-BR/comunicacao.md",
+    "skills/refinar-prosa/references/pt-BR/estilo-avancado.md",
 ]
 text = "\n".join(Path(path).read_text() for path in paths)
 numbers = [int(n) for n in re.findall(r"^## (\d+) —", text, re.M)]
@@ -657,7 +657,7 @@ nenhum arquivo inesperado no status.
 Se e somente se a validação exigir correção nos três arquivos em escopo:
 
 ```bash
-git add skills/refinar-prosa/references/estilo-avancado.md skills/refinar-prosa/SKILL.md README.md
+git add skills/refinar-prosa/references/pt-BR/estilo-avancado.md skills/refinar-prosa/SKILL.md README.md
 git commit -m "fix: validate complete pattern catalog"
 ```
 
