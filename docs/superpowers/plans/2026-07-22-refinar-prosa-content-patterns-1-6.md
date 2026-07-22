@@ -448,7 +448,7 @@ Use `apply_patch` com este patch:
 @@
  | Comunicação | resíduos de chatbot, bajulação, preenchimento e hesitação |
  | Cadência | frases de efeito, dramatização, aforismos e falsas espontaneidades |
- 
+
 +### Padrões de conteúdo (1–6)
 +
 +1. Inflação de importância e legado.

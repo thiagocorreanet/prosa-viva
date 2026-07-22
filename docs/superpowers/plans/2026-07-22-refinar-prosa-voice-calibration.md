@@ -76,7 +76,7 @@ Use `apply_patch` com este patch exato:
  - Respeite instruções explícitas do usuário.
  - Preserve a voz e escolhas legítimas sem uniformizar o texto.
  - Confirme que conteúdo protegido permaneceu intacto.
- 
+
 +## Calibração de voz
 +
 +Quando houver amostra e texto-alvo distinguíveis, trate-os como fontes
@@ -178,7 +178,7 @@ Use `apply_patch` com este patch exato:
 @@
  - Texto já adequado: devolva o original nos modos texto colado e embutido; no
    modo arquivo, não escreva o arquivo e informe a ausência de mudança útil.
- 
+
 +## Exemplos de calibração
 +
 +### Voz formal

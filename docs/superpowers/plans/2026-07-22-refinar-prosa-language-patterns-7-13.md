@@ -520,12 +520,12 @@ Use `apply_patch` para acrescentar, junto ao mapa de padrões 1–6, esta seçã
 ```markdown
 ### Linguagem e gramática — padrões 7–13
 
-7 — Vocabulário recorrente sem função  
-8 — Substituição artificial de verbos simples  
-9 — Paralelismo negativo acrescentado  
-10 — Tríades decorativas  
-11 — Variação lexical desnecessária  
-12 — Intervalos falsos  
+7 — Vocabulário recorrente sem função
+8 — Substituição artificial de verbos simples
+9 — Paralelismo negativo acrescentado
+10 — Tríades decorativas
+11 — Variação lexical desnecessária
+12 — Intervalos falsos
 13 — Agente oculto sem necessidade
 
 Se a leitura encontrar recorrência lexical sem função, substituição artificial
@@ -541,12 +541,12 @@ Use `apply_patch` para acrescentar, junto ao catálogo público 1–6, este bloc
 ```markdown
 ### Linguagem e gramática
 
-7 — Vocabulário recorrente sem função  
-8 — Substituição artificial de verbos simples  
-9 — Paralelismo negativo acrescentado  
-10 — Tríades decorativas  
-11 — Variação lexical desnecessária  
-12 — Intervalos falsos  
+7 — Vocabulário recorrente sem função
+8 — Substituição artificial de verbos simples
+9 — Paralelismo negativo acrescentado
+10 — Tríades decorativas
+11 — Variação lexical desnecessária
+12 — Intervalos falsos
 13 — Agente oculto sem necessidade
 ```
 

@@ -444,11 +444,11 @@ Use `apply_patch` para acrescentar junto aos grupos anteriores:
 ```markdown
 ### Comunicação, preenchimento e hesitação — padrões 20–25
 
-20 — Artefatos de chatbot e ofertas de continuação  
-21 — Avisos de limite de conhecimento e preenchimento especulativo  
-22 — Tom adulador ou servil  
-23 — Preenchimento sem função  
-24 — Empilhamento de ressalvas  
+20 — Artefatos de chatbot e ofertas de continuação
+21 — Avisos de limite de conhecimento e preenchimento especulativo
+22 — Tom adulador ou servil
+23 — Preenchimento sem função
+24 — Empilhamento de ressalvas
 25 — Conclusões positivas genéricas
 
 Se a leitura encontrar resíduo de chatbot, especulação sobre informação
@@ -464,11 +464,11 @@ Use `apply_patch` para acrescentar ao catálogo público:
 ```markdown
 ### Comunicação, preenchimento e hesitação
 
-20 — Artefatos de chatbot e ofertas de continuação  
-21 — Avisos de limite de conhecimento e preenchimento especulativo  
-22 — Tom adulador ou servil  
-23 — Preenchimento sem função  
-24 — Empilhamento de ressalvas  
+20 — Artefatos de chatbot e ofertas de continuação
+21 — Avisos de limite de conhecimento e preenchimento especulativo
+22 — Tom adulador ou servil
+23 — Preenchimento sem função
+24 — Empilhamento de ressalvas
 25 — Conclusões positivas genéricas
 ```
 

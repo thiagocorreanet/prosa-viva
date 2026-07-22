@@ -512,13 +512,13 @@ Use `apply_patch` para acrescentar junto aos grupos anteriores:
 ```markdown
 ### Estilo avançado e cadência — padrões 26–33
 
-26 — Hifenização imprópria em português  
-27 — Fórmulas de autoridade persuasiva  
-28 — Anúncios do percurso textual  
-29 — Títulos seguidos de reformulação  
-30 — Documentação ancorada na mudança  
-31 — Sequências curtas de dramatização artificial  
-32 — Fórmulas aforísticas no lugar de precisão  
+26 — Hifenização imprópria em português
+27 — Fórmulas de autoridade persuasiva
+28 — Anúncios do percurso textual
+29 — Títulos seguidos de reformulação
+30 — Documentação ancorada na mudança
+31 — Sequências curtas de dramatização artificial
+32 — Fórmulas aforísticas no lugar de precisão
 33 — Aberturas de falsa espontaneidade
 
 Se a leitura encontrar hifenização duvidosa, autoridade formulaica,
@@ -535,13 +535,13 @@ Use `apply_patch` para acrescentar ao catálogo público:
 ```markdown
 ### Estilo avançado e cadência
 
-26 — Hifenização imprópria em português  
-27 — Fórmulas de autoridade persuasiva  
-28 — Anúncios do percurso textual  
-29 — Títulos seguidos de reformulação  
-30 — Documentação ancorada na mudança  
-31 — Sequências curtas de dramatização artificial  
-32 — Fórmulas aforísticas no lugar de precisão  
+26 — Hifenização imprópria em português
+27 — Fórmulas de autoridade persuasiva
+28 — Anúncios do percurso textual
+29 — Títulos seguidos de reformulação
+30 — Documentação ancorada na mudança
+31 — Sequências curtas de dramatização artificial
+32 — Fórmulas aforísticas no lugar de precisão
 33 — Aberturas de falsa espontaneidade
 ```
 

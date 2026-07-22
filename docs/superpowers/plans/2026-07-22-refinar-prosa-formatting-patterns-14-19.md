@@ -449,11 +449,11 @@ Use `apply_patch` para acrescentar junto aos grupos anteriores:
 ```markdown
 ### Formatação e estilo visual — padrões 14–19
 
-14 — Travessões formulaicos ou excessivos  
-15 — Negrito mecânico  
-16 — Listas verticais com cabeçalhos repetitivos  
-17 — Capitalização inadequada de títulos  
-18 — Emojis decorativos  
+14 — Travessões formulaicos ou excessivos
+15 — Negrito mecânico
+16 — Listas verticais com cabeçalhos repetitivos
+17 — Capitalização inadequada de títulos
+18 — Emojis decorativos
 19 — Convenção de aspas inconsistente
 
 Se a leitura encontrar repetição formulaica de travessões, negrito mecânico,
@@ -469,11 +469,11 @@ Use `apply_patch` para acrescentar ao catálogo público:
 ```markdown
 ### Formatação e estilo visual
 
-14 — Travessões formulaicos ou excessivos  
-15 — Negrito mecânico  
-16 — Listas verticais com cabeçalhos repetitivos  
-17 — Capitalização inadequada de títulos  
-18 — Emojis decorativos  
+14 — Travessões formulaicos ou excessivos
+15 — Negrito mecânico
+16 — Listas verticais com cabeçalhos repetitivos
+17 — Capitalização inadequada de títulos
+18 — Emojis decorativos
 19 — Convenção de aspas inconsistente
 ```
 
