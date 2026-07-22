@@ -70,7 +70,7 @@ for item in ["## Arquitetura da skill", "250 linhas", "2.000 linhas"]:
     if item not in readme:
         missing.append(f"README.md: {item}")
 print("\n".join(missing))
-raise SystemExit(not missing)
+raise SystemExit(bool(missing))
 PY
 ```
 

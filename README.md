@@ -168,6 +168,24 @@ editorial:
 Veja a [suíte de avaliações](https://github.com/thiagocorreanet/prosa-viva/issues/15)
 e as [regressões de idempotência](https://github.com/thiagocorreanet/prosa-viva/issues/20).
 
+## Arquitetura da skill
+
+O comportamento possui uma única fonte canônica:
+`skills/refinar-prosa/SKILL.md`. O plugin encontra essa pasta pelo campo
+`"skills": "./skills/"`, e a instalação isolada usa o mesmo diretório. Não há
+`SKILL.md` duplicado na raiz.
+
+O arquivo principal contém contrato, modos, auditoria e roteamento. Regras
+detalhadas são carregadas sob demanda: preservação autoral fica em
+`references/preservacao-autoral.md`, enquanto o catálogo desta versão fica em
+`references/pt-BR/`. Cada referência é ligada diretamente pelo `SKILL.md` quando
+seu conteúdo passa a existir.
+
+Os limites de manutenção são 250 linhas para o `SKILL.md`, 400 linhas para cada
+referência, 2.000 linhas para o conjunto das referências e 40 linhas para
+`agents/openai.yaml`. O comando `python3 scripts/validate_skill_architecture.py`
+verifica esses invariantes.
+
 ## Roadmap
 
 | Etapa | Entregas | Issues |

@@ -9,6 +9,17 @@ Revise somente a prosa em português brasileiro que o usuário colocar no escopo
 Melhore clareza, concisão, ritmo e naturalidade sem trocar o significado pela
 forma.
 
+## Fonte canônica e divulgação progressiva
+
+Este arquivo e suas referências sob `skills/refinar-prosa/` são a única fonte
+do comportamento. Não procure nem mantenha outro `SKILL.md` na raiz.
+
+As referências gerais vivem em `references/`, e os grupos editoriais desta
+versão vivem em `references/pt-BR/`. Carregue somente referências ligadas
+diretamente por este arquivo e relevantes aos sinais encontrados. Não dependa de
+encadeamento entre referências nem crie arquivos vazios para grupos ainda não
+implementados.
+
 ## Fluxo
 
 1. Confirme que há texto ou um arquivo legível para revisar.
