@@ -249,7 +249,18 @@ aplique o cachebuster local com update_plugin_cachebuster.py, leia o nome real
 do marketplace com read_marketplace_name.py e instale o plugin pela CLI.
 ```
 
-O fluxo oficial lê o nome do marketplace, em vez de presumir `personal`, e
+Para executar a parte final manualmente, abra o terminal na raiz da skill de
+sistema `$plugin-creator` e rode:
+
+```bash
+PROSA_VIVA_CACHEBUSTER="local-$(date -u +%Y%m%d-%H%M%S)"
+python3 scripts/update_plugin_cachebuster.py \
+  ~/plugins/prosa-viva \
+  --cachebuster "${PROSA_VIVA_CACHEBUSTER}"
+PROSA_VIVA_MARKETPLACE_NAME="$(python3 scripts/read_marketplace_name.py)"
+```
+
+Assim, o fluxo lê o nome do marketplace, em vez de presumir `personal`, e
 termina com estes comandos públicos:
 
 ```bash
