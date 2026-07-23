@@ -7,22 +7,23 @@
 Um plugin nativo para Codex que revisa textos em português, preserva o que o
 autor quis dizer e devolve ritmo, precisão e voz à prosa.
 
-[![Status: em planejamento](https://img.shields.io/badge/status-em%20planejamento-F5A623)](https://github.com/thiagocorreanet/prosa-viva/issues)
+[![Release: v0.1.0](https://img.shields.io/badge/release-v0.1.0-2EA44F)](https://github.com/thiagocorreanet/prosa-viva/releases/tag/v0.1.0)
+[![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-blue)](LICENSE)
 [![Plataforma: Codex](https://img.shields.io/badge/plataforma-Codex-111111)](https://developers.openai.com/codex/)
 [![Idioma principal: pt-BR](https://img.shields.io/badge/idioma-pt--BR-009C3B)](https://github.com/thiagocorreanet/prosa-viva/issues/19)
 
 [Visão](#visão) ·
 [Como funcionará](#como-funcionará) ·
 [Exemplo](#exemplo) ·
-[Instalação](#instalação-local-como-plugin) ·
+[Instalação](#instalação) ·
 [Roadmap](#roadmap) ·
 [Contribuir](#como-contribuir)
 
 </div>
 
-> [!IMPORTANT]
-> O Prosa Viva ainda não possui uma release pública. O checkout atual já pode
-> ser instalado localmente no Codex pelo fluxo documentado abaixo.
+> [!NOTE]
+> A versão `v0.1.0` é a primeira release pública. A série `0.1.x` suporta
+> oficialmente apenas português brasileiro.
 
 ## Visão
 
@@ -226,10 +227,64 @@ núcleo comum.
 Consulte o [backlog completo](https://github.com/thiagocorreanet/prosa-viva/issues)
 para acompanhar decisões e progresso.
 
-## Instalação local como plugin
+## Instalação
 
-O repositório mantém a versão SemVer limpa. Para desenvolvimento, uma cópia
-descartável em `~/plugins/prosa-viva` recebe o cachebuster usado pelo Codex. O
+Adicione o marketplace Git e instale o plugin:
+
+```bash
+codex plugin marketplace add thiagocorreanet/prosa-viva
+codex plugin add prosa-viva@prosa-viva
+```
+
+Abra uma conversa nova e invoque:
+
+```text
+Use $refinar-prosa para revisar este texto em pt-BR sem alterar os fatos.
+```
+
+### Atualização e reinstalação
+
+Atualize o marketplace e reinstale a versão publicada mais recente:
+
+```bash
+codex plugin marketplace upgrade prosa-viva
+codex plugin add prosa-viva@prosa-viva
+```
+
+Depois da reinstalação, abra uma conversa nova para carregar a skill atualizada.
+No aplicativo desktop, reinicie o aplicativo se a origem do marketplace tiver
+mudado ou se a lista ainda não refletir a nova versão.
+
+### Remoção
+
+```bash
+codex plugin remove prosa-viva@prosa-viva --json
+codex plugin list --marketplace prosa-viva --json
+```
+
+A remoção usa somente a CLI pública do Codex; não apague caches nem edite
+`config.toml` manualmente.
+
+## Instalação somente como skill
+
+Para usar apenas `$refinar-prosa`, sem o manifesto e a interface do plugin:
+
+```bash
+npx skills add thiagocorreanet/prosa-viva \
+  --skill refinar-prosa \
+  --agent codex \
+  --global \
+  --yes \
+  --copy
+```
+
+Use `npx skills add thiagocorreanet/prosa-viva --list` para conferir a skill
+antes da instalação. Essa rota é independente do marketplace.
+
+## Desenvolvimento local
+
+O checkout mantém a versão SemVer limpa. Uma cópia descartável em
+`~/plugins/prosa-viva` recebe o cachebuster usado durante o desenvolvimento. O
 marketplace pessoal fica em `~/.agents/plugins/marketplace.json`; staging,
 marketplace e cache não são versionados.
 
@@ -277,7 +332,7 @@ Abra uma conversa nova e invoque `$refinar-prosa`. No aplicativo desktop,
 reinicie o aplicativo somente quando criar, remover ou mudar a fonte do
 marketplace; uma reinstalação comum pede apenas uma conversa nova.
 
-### Atualização e reinstalação
+### Atualização do staging
 
 Após mudar a skill ou o manifesto, repita a validação e recrie integralmente o
 staging:
@@ -301,7 +356,7 @@ Não incremente `0.1.0` apenas para invalidar o cache, não acumule sufixos e n�
 edite `config.toml`, `marketplace.json` ou o cache manualmente. Teste a mudança
 em uma conversa nova.
 
-### Remoção
+### Remoção do staging instalado
 
 Leia o mesmo nome do marketplace com `$plugin-creator` e use a API pública da
 CLI:
@@ -314,18 +369,6 @@ codex plugin list --json
 A remoção desinstala o plugin e limpa seu cache, mas mantém a entrada disponível
 no marketplace pessoal para uma instalação futura. Não apague diretórios de
 cache nem altere configurações internas do Codex.
-
-## Instalação somente como skill
-
-Quem não precisa testar o manifesto e os metadados do plugin pode instalar
-somente a fonte canônica da skill:
-
-```bash
-npx skills add . --skill refinar-prosa
-```
-
-Antes de instalar, `npx skills add . --list` mostra o que será descoberto. Essa
-rota é independente do marketplace e não substitui o teste do pacote completo.
 
 ## Como contribuir
 
@@ -356,8 +399,7 @@ atribuído antes da primeira release.
 
 ## Licença
 
-A licença será definida antes da versão `0.1.0`. Acompanhe a
-[issue #16](https://github.com/thiagocorreanet/prosa-viva/issues/16).
+Distribuído sob a [licença MIT](LICENSE). Copyright © 2026 Thiago Corrêa.
 
 ---
 

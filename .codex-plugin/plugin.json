@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Revisa textos em português brasileiro com clareza, naturalidade e preservação factual.",
   "author": {
-    "name": "thiagocorreanet",
+    "name": "Thiago Corrêa",
     "url": "https://github.com/thiagocorreanet"
   },
   "homepage": "https://github.com/thiagocorreanet/prosa-viva",
@@ -20,7 +20,7 @@
     "displayName": "Prosa Viva",
     "shortDescription": "Refina prosa em pt-BR sem perder fatos ou voz",
     "longDescription": "Revisa textos em português brasileiro para melhorar clareza, concisão, ritmo e naturalidade, preservando fatos, estrutura e voz.",
-    "developerName": "thiagocorreanet",
+    "developerName": "Thiago Corrêa",
     "category": "Productivity",
     "capabilities": [
       "Write"

@@ -6,14 +6,15 @@ README = Path(__file__).resolve().parents[1] / "README.md"
 
 
 class LocalInstallationDocumentationTests(unittest.TestCase):
-    def test_documents_each_supported_local_lifecycle(self):
+    def test_documents_each_supported_installation_lifecycle(self):
         content = README.read_text(encoding="utf-8")
 
         for heading in (
-            "## Instalação local como plugin",
+            "## Instalação",
             "### Atualização e reinstalação",
             "### Remoção",
             "## Instalação somente como skill",
+            "## Desenvolvimento local",
         ):
             with self.subTest(heading=heading):
                 self.assertIn(heading, content)
@@ -32,6 +33,22 @@ class LocalInstallationDocumentationTests(unittest.TestCase):
         ):
             with self.subTest(command=command):
                 self.assertIn(command, content)
+
+    def test_documents_public_github_distribution(self):
+        content = README.read_text(encoding="utf-8")
+
+        for command in (
+            "codex plugin marketplace add thiagocorreanet/prosa-viva",
+            "codex plugin add prosa-viva@prosa-viva",
+            "codex plugin marketplace upgrade prosa-viva",
+            "codex plugin remove prosa-viva@prosa-viva",
+            "npx skills add thiagocorreanet/prosa-viva",
+        ):
+            with self.subTest(command=command):
+                self.assertIn(command, content)
+
+        self.assertIn("v0.1.0", content)
+        self.assertIn("MIT", content)
 
     def test_explains_cache_and_session_boundaries(self):
         content = README.read_text(encoding="utf-8")
