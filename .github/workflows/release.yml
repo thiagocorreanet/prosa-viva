@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Check out tagged source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Run tests
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Validate skill architecture
+        run: python3 scripts/validate_skill_architecture.py
+
+      - name: Validate tagged release
+        run: python3 scripts/validate_release.py --tag "$GITHUB_REF_NAME"
+
+      - name: Build release archive
+        shell: bash
+        run: |
+          PROSA_VIVA_ARCHIVE="prosa-viva-${GITHUB_REF_NAME}.zip"
+          git archive --format=zip --prefix=prosa-viva/ \
+            --output="${PROSA_VIVA_ARCHIVE}" HEAD \
+            .codex-plugin skills README.md LICENSE
+          sha256sum "${PROSA_VIVA_ARCHIVE}" > "${PROSA_VIVA_ARCHIVE}.sha256"
+
+      - name: Publish GitHub Release
+        shell: bash
+        run: |
+          PROSA_VIVA_ARCHIVE="prosa-viva-${GITHUB_REF_NAME}.zip"
+          gh release create "$GITHUB_REF_NAME" \
+            --verify-tag \
+            --title "Prosa Viva ${GITHUB_REF_NAME}" \
+            --notes-file "docs/releases/${GITHUB_REF_NAME}.md" \
+            "${PROSA_VIVA_ARCHIVE}" \
+            "${PROSA_VIVA_ARCHIVE}.sha256"
